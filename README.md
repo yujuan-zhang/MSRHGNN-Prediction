@@ -12,8 +12,7 @@ Author 3: Rui Wang, Email: 2219312248@qq.com
 
 
 ## Data available
-We evaluate the performance of our proposed method on three widely-used benchmarks: B-dataset, C-dataset, and F-dataset. These datasets are also available for download through Google Drive
- for your convenience (https://drive.google.com/drive/folders/10bFArKqQT1DZEiugsn0RByUnkdXiPAKU?usp=sharing). Below are the specific descriptions of the datasets.
+We evaluate the performance of our proposed method on three widely-used benchmarks: B-dataset, C-dataset, and F-dataset. These datasets are also available for download through Google Drive for your convenience. After downloading, please place the datasets in the data folder. (https://drive.google.com/drive/folders/10bFArKqQT1DZEiugsn0RByUnkdXiPAKU?usp=sharing). Below are the specific descriptions of the datasets.
 
 | Dataset   | Drug | Disease | Protein | Drug-Disease | Drug-Protein | Disease-Protein | Sparsity |
 | --------- | ---- | ------- | ------- | ------------ | ------------ | --------------- | -------- |
@@ -97,5 +96,6 @@ This project benefits from open-source implementations provided by previous stud
 
 - https://github.com/OleCui/paper_GCGB
 - https://github.com/JK-Liu7/DRMAHGC
+
 
 

@@ -7,9 +7,9 @@ Author 2: Donglin He, Email: 1364825364@qq.com
 
 Author 3: Xin Li, Email: 2739273211@qq.com
 
-Author 3: Rui Wang, Email: 2219312248@qq.com
+Author 4: Rui Wang, Email: 2219312248@qq.com
 
-
+Author 5:Yujuan Zhang, Email: yujuan.zhang418@gmail.com
 
 ## Data available
 We evaluate the performance of our proposed method on three widely-used benchmarks: B-dataset, C-dataset, and F-dataset. These datasets are also available for download through Google Drive for your convenience.(https://drive.google.com/drive/folders/10bFArKqQT1DZEiugsn0RByUnkdXiPAKU?usp=sharing). After downloading, please create a data folder and place the datasets inside it. Below are the specific descriptions of the datasets.
@@ -96,6 +96,7 @@ This project benefits from open-source implementations provided by previous stud
 
 - https://github.com/OleCui/paper_GCGB
 - https://github.com/JK-Liu7/DRMAHGC
+
 
 
 

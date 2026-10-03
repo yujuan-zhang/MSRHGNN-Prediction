@@ -22,7 +22,7 @@ We evaluate the performance of our proposed method on three widely-used benchmar
 
 - *DrugFingerprint.csv*: The drug fingerprint similarities between each drug pairs.
 - *DrugGIP.csv*: The drug Gaussian interaction profile (GIP) kernel similarities between each drug pairs.
-- *disease_ie_sim.csv*: The drug similarity between each drug pair based on information entropy.
+- *drug_ie_sim.csv*: The drug similarity between each drug pair based on information entropy.
 - *DiseasePS.csv*: The disease phenotype similarities between each disease pairs.
 - *DiseaseGIP.csv*: The disease GIP kernel similarities between each disease pairs.
 - *disease_ie_sim.csv*: The disease similarity between each disease pair based on information entropy.
@@ -73,19 +73,19 @@ The command to train MSRHGNN on the B-dataset, C-dataset or F-dataset is as foll
 B-dataset:
 
 ```python
-python train_DDA.py --dataset = B-dataset
+python train_DDA.py --dataset B-dataset
 ```
 
 C-dataset:
 
 ```python
-python train_DDA.py --dataset = C-dataset
+python train_DDA.py --dataset C-dataset
 ```
 
 F-dataset:
 
 ```python
-python train_DDA.py --dataset = F-dataset
+python train_DDA.py --dataset F-dataset
 ```
 
 
@@ -101,3 +101,40 @@ This project benefits from open-source implementations provided by previous stud
 
 
 
+
+
+## Before running
+
+Run from the repository root. The current code uses CUDA explicitly; it does not
+provide a CPU fallback. Keep the Python and CUDA/DGL versions listed above.
+Download the benchmark data using the Data available link. `get_data()` actually
+reads the following files from `data/<dataset>/`:
+
+```text
+DrugFingerprint.csv             DrugGIP.csv
+drug_ie_sim.csv                  DiseasePS.csv
+DiseaseGIP.csv                   disease_ie_sim.csv
+Protein_sequence.csv            ProteinGIP_Drug.csv
+ProteinGIP_Disease.csv           DrugDiseaseAssociationNumber.csv
+DrugProteinAssociationNumber.csv ProteinDiseaseAssociationNumber.csv
+drug_f512_feature.csv            disease_f512_feature.csv
+protein_f512_feature.csv
+```
+
+Similarity/sequence CSV readers drop the first column; association tables are
+read as integers; the three `*_f512_feature.csv` files are read without a header.
+Use the original benchmark files and their row ordering. These requirements
+come from `data_preprocess.py`; the names in the earlier dataset description
+are not a substitute for this list. Although `train_DDA.py` assigns
+`SGMAE/Embedding/<dataset>/` to `GAE_data_dir`, the current loader reads these
+feature files from `data/<dataset>/` instead.
+
+## Outputs
+
+Training prints per-epoch metrics and final AUC summaries. Whenever a fold's AUC
+improves, it writes `label<fold>.npy` and `score<fold>.npy` under
+`Results/<dataset>/<timestamp>/`. Labels and scores correspond by row.
+These are evaluation artifacts, not a saved model checkpoint.
+
+The defaults run 10 folds with 300 epochs each. End-to-end runtime has not been
+measured for this quick-start; it depends on the dataset and GPU.

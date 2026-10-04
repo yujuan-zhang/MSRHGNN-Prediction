@@ -138,3 +138,17 @@ These are evaluation artifacts, not a saved model checkpoint.
 
 The defaults run 10 folds with 300 epochs each. End-to-end runtime has not been
 measured for this quick-start; it depends on the dataset and GPU.
+
+## Focused validation
+
+The bundled B-dataset files passed the actual `get_data()` loader in a local
+CPU check. The local C/F dataset copies were incomplete (the first missing
+file was `drug_ie_sim.csv`); verify the entire required file list after download.
+No CUDA training was performed.
+
+The negative-sampling code previously indexed drug features using disease IDs,
+which failed on a real B-dataset negative pair with disease ID 269 because
+there are only 269 drugs. It now reads `di_fusion` for disease features.
+A focused check using 40 real negative candidates (disease IDs 269–308)
+completed clustering and selected 9 valid negatives. The KMeans sampling
+method remains unchanged; this does not validate full training or model scores.

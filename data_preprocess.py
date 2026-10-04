@@ -87,7 +87,7 @@ def get_data(args):
 def negative_sample_kmeans(data, one_index, zero_index, args, n_clusters=10, per_cluster_ratio=0.1):
 
     drug_feat = data['dr_fusion']
-    dis_feat = data['dr_fusion']
+    dis_feat = data['di_fusion']
 
     zero_features = []
     for (d, di) in zero_index:
@@ -376,6 +376,7 @@ def dgl_heterograph(data, drdi, args):
 
 
     return drdipr_graph, meta_paths, edge_types, data
+
 
 
 
